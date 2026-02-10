@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "nazev": "KOENIGSEGG JESKO",
+    "vyroba": 2020,
+    "rychlost": 400,
+    "zrychleni": 2.7,
+    "auto": "https://www.carscoops.com/wp-content/uploads/2019/04/ea5becbb-koenigsegg-jesko-.jpg",
+    "vlajka": "https://flagcdn.com/w40/se.png"
+  },
+  {
+    "id": 2,
+    "nazev": "BUGATTI CHIRON",
+    "vyroba": 2019,
+    "rychlost": 420,
+    "zrychleni": 2.4,
+    "auto": "https://bugatti.imgix.net/677aa18a531541bbada6c275/chiron-og.jpg",
+    "vlajka": "https://flagcdn.com/w40/fr.png"
+  },
+  {
+    "id": 3,
+    "nazev": "LAMBORGHINI SVJ",
+    "vyroba": 2021,
+    "rychlost": 350,
+    "zrychleni": 2.8,
+    "auto": "https://1884403144.rsc.cdn77.org/foto/lamborghini-aventador-svj-lamborghini-aventador-svj/MTIwMHg2NzUvZmlsdGVyczpub191cHNjYWxlKDEpL2ltZw/9319828.jpg?v=0&st=_BnrYV_EV4GwFvIbqRlCDZdwb015gwcmaDfuGw8Hkzc&ts=1600812000&e=0",
+    "vlajka": "https://flagcdn.com/w40/it.png"
+  },
+  {
+    "id": 4,
+    "nazev": "FERRARI SF90",
+    "vyroba": 2022,
+    "rychlost": 340,
+    "zrychleni": 2.5,
+    "auto": "https://paultan.org/image/2023/06/Ferrari-SF90-XX-Stradale-and-SF90-XX-Spider-1-1200x628.jpg",
+    "vlajka": "https://flagcdn.com/w40/it.png"
+  },
+  {
+    "id": 5,
+    "nazev": "McLAREN 720S",
+    "vyroba": 2020,
+    "rychlost": 341,
+    "zrychleni": 2.9,
+    "auto": "https://d62-a.sdn.cz/d_62/c_img_gV_J/B59T/mclaren-720s-le-mans.jpeg",
+    "vlajka": "https://flagcdn.com/w40/gb.png"
+  },
+  {
+    "id": 6,
+    "nazev": "PORSCHE 911 TURBO S",
+    "vyroba": 2021,
+    "rychlost": 330,
+    "zrychleni": 2.7,
+    "auto": "https://s2.dmcdn.net/v/SyYhP1eoWdbS9WgGo/x1080",
+    "vlajka": "https://flagcdn.com/w40/de.png"
+  }
+]

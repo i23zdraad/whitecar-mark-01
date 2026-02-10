@@ -1,0 +1,371 @@
+<!DOCTYPE html> 
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<title>Katalog sportovních aut </title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    background: #f1f1f1;
+    color: #111;
+    transition: background 0.3s, color 0.3s;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body.dark-mode {
+    background: #0d0f13;
+    color: #f1f1f1;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: linear-gradient(90deg, #0d0f13, #1a1c22, #0d0f13);
+    padding: 18px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #c9a24d;
+}
+
+.logo img {
+    height: 55px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    color: #c9a24d;
+    text-decoration: none;
+    margin-left: 45px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 0;
+    height: 2px;
+    background: #c9a24d;
+    transition: 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.toggle {
+    margin-left: 40px;
+    background: none;
+    border: 2px solid #c9a24d;
+    color: #c9a24d;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+main {
+    max-width: 1400px;
+    margin: 70px auto;
+    display: grid;
+    gap: 50px;
+    padding: 0 30px;
+    flex: 1;
+    transition: grid-template-columns 0.3s ease;
+}
+.car {
+    background: white;
+    border-radius: 35px;
+    padding: 25px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+body.dark-mode .car {
+    background: #1a1c22;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+}
+
+.car:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 35px 65px rgba(0,0,0,0.25);
+}
+
+.car img.auto {
+    width: 100%;
+    border-radius: 30px;
+}
+
+.car h2 {
+    margin: 25px 0 15px;
+    letter-spacing: 3px;
+}
+
+.info {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 15px;
+    align-items: center;
+}
+
+.info div {
+    text-align: center;
+}
+
+.label {
+    display: block;
+    font-size: 12px;
+    color: #777;
+    letter-spacing: 1px;
+}
+
+body.dark-mode .label {
+    color: #aaa;
+}
+
+.flag {
+    width: 42px;
+    border-radius: 6px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.3);
+}
+.actions {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.actions button {
+    padding: 10px 22px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.btn-edit {
+    background: #c9a24d;
+    color: #111;
+}
+
+.btn-edit:hover {
+    background: #e0b85c;
+}
+
+.btn-delete {
+    background: #b33434;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #d94a4a;
+}
+
+
+footer {
+    background: linear-gradient(90deg, #0d0f13, #1a1c22, #0d0f13);
+    color: #c9a24d;
+    padding: 60px 20px 40px;
+    text-align: center;
+    border-top: 2px solid #c9a24d;
+}
+
+footer img {
+    height: 45px;
+    margin-bottom: 20px;
+}
+
+footer h3 {
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+footer p {
+    color: #9a9a9a;
+    font-size: 14px;
+}
+
+
+@media (max-width: 600px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .actions button {
+        width: 100%;
+    }
+}
+
+
+@media (min-width: 601px) and (max-width: 1024px) and (orientation: portrait) {
+    main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (min-width: 601px) and (max-width: 1024px) and (orientation: landscape) {
+    main {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+@media (min-width: 1025px) {
+    main {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <img src="logo.png" alt="logo">
+    </div>
+
+    <nav>
+        <a href="index.html">ÚVOD</a>
+        <a href="pridat.html">PŘIDAT</a>
+        <button class="toggle" onclick="toggleMode()">☀ / ☾</button>
+    </nav>
+</header>
+
+
+<main>
+    <div class="car">
+        <img class="auto" id="auto" src="https://www.carscoops.com/wp-content/uploads/2019/04/ea5becbb-koenigsegg-jesko-.jpg">
+        <h2 id="nazev">KOENIGSEGG JESKO</h2>
+        <div class="info">
+            <div><span class="label" id="vyroba">ROK</span>2020</div>
+            <div><span class="label" id="rychlost">TOP SPEED</span>400 km/h</div>
+            <div><span class="label" id="zrychleni">0–100</span>2,7 s</div>
+            <div><img class="flag"   id= "vlajka" src="https://flagcdn.com/w40/se.png"></div>
+        </div>
+         <div class="actions">
+            <button class="btn-edit">UPRAVIT</button>
+            <button class="btn-delete">SMAZAT</button>
+        </div>
+    </div>
+
+    <div class="car">
+        <img class="auto" id="auto" src="https://bugatti.imgix.net/677aa18a531541bbada6c275/chiron-og.jpg">
+        <h2 id="nazev">BUGATTI CHIRON</h2>
+        <div class="info">
+            <div><span class="label" id="vyroba">ROK</span>2019</div>
+            <div><span class="label" id="rychlost">TOP SPEED</span>420 km/h</div>
+            <div><span class="label" id="zrychleni">0–100</span>2,4 s</div>
+            <div><img class="flag"   id= "vlajka" src="https://flagcdn.com/w40/fr.png"></div>
+        </div>
+        <div class="actions">
+            <button class="btn-edit">UPRAVIT</button>
+            <button class="btn-delete">SMAZAT</button>
+        </div>
+
+    </div>
+
+    <div class="car">
+        <img class="auto" id="auto" src="https://1884403144.rsc.cdn77.org/foto/lamborghini-aventador-svj-lamborghini-aventador-svj/MTIwMHg2NzUvZmlsdGVyczpub191cHNjYWxlKDEpL2ltZw/9319828.jpg?v=0&st=_BnrYV_EV4GwFvIbqRlCDZdwb015gwcmaDfuGw8Hkzc&ts=1600812000&e=0">
+        <h2 id="nazev">LAMBORGHINI SVJ</h2>
+        <div class="info">
+            <div><span class="label" id="vyroba">ROK</span>2021</div>
+            <div><span class="label" id="rychlost">TOP SPEED</span>350 km/h</div>
+            <div><span class="label" id="zrychleni">0–100</span>2,8 s</div>
+            <div><img class="flag"   id= "vlajka" src="https://flagcdn.com/w40/it.png"></div>
+        </div>
+         <div class="actions">
+            <button class="btn-edit">UPRAVIT</button>
+            <button class="btn-delete">SMAZAT</button>
+        </div>
+    </div>
+
+    <div class="car">
+        <img class="auto" id="auto" src="https://paultan.org/image/2023/06/Ferrari-SF90-XX-Stradale-and-SF90-XX-Spider-1-1200x628.jpg">
+        <h2 id="nazev">FERRARI SF90</h2>
+        <div class="info">
+            <div><span class="label" id="vyroba">ROK</span>2022</div>
+            <div><span class="label" id="rychlost">TOP SPEED</span>340 km/h</div>
+            <div><span class="label" id="0-100">0–100</span>2,5 s</div>
+            <div><img class="flag"   id= "vlajka" src="https://flagcdn.com/w40/it.png"></div>
+        </div>
+         <div class="actions">
+            <button class="btn-edit">UPRAVIT</button>
+            <button class="btn-delete">SMAZAT</button>
+        </div>
+    </div>
+
+    <div class="car">
+        <img class="auto" id="auto" src="https://d62-a.sdn.cz/d_62/c_img_gV_J/B59T/mclaren-720s-le-mans.jpeg">
+        <h2 id="nazev">McLAREN 720S</h2>
+        <div class="info">
+            <div><span class="label" id="vyroba">ROK</span>2020</div>
+            <div><span class="label" id="rychlost">TOP SPEED</span>341 km/h</div>
+            <div><span class="label" id="0-100">0–100</span>2,9 s</div>
+            <div><img class="flag"   id= "vlajka" src="https://flagcdn.com/w40/gb.png"></div>
+        </div>
+         <div class="actions">
+            <button class="btn-edit">UPRAVIT</button>
+            <button class="btn-delete">SMAZAT</button>
+        </div>
+    </div>
+
+    <div class="car">
+        <img class="auto" id="auto" src="https://s2.dmcdn.net/v/SyYhP1eoWdbS9WgGo/x1080">
+        <h2 id="nazev">PORSCHE 911 TURBO S</h2>
+        <div class="info">
+            <div><span class="label" id="vyroba">ROK</span>2021</div>
+            <div><span class="label" id="rychlost">TOP SPEED</span>330 km/h</div>
+            <div><span class="label" id="0-100">0–100</span>2,7 s</div>
+            <div><img class="flag"   id= "vlajka" src="https://flagcdn.com/w40/de.png"></div>
+        </div>
+         <div class="actions">
+            <button class="btn-edit">UPRAVIT</button>
+            <button class="btn-delete">SMAZAT</button>
+        </div>
+    </div>
+</main>
+
+
+<footer>
+    <img src="logo.png" alt=" logo">
+    <h3>Katalog sportovních aut</h3>
+    <p>Adam Zdráhal</p>
+</footer>
+
+<script>
+function toggleMode() {
+    document.body.classList.toggle("dark-mode");
+}
+</script>
+
+</body>
+</html>
