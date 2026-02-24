@@ -122,6 +122,7 @@ const server = http.createServer((req, res) => {
             return sendJSON(res, 201, car);
         });
     }
+    
 
     // DELETE /delete/:id
     if (req.method === "DELETE" && pathname.startsWith("/delete/")) {

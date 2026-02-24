@@ -74,7 +74,6 @@ body {
     background: #bbb;
 }
 
-
 #toast {
     position: fixed;
     left: 25px;
@@ -100,8 +99,8 @@ body {
 
 <div class="confirm-box">
     <h1>Potvrzení smazání</h1>
-    <p>
-        Opravdu chceš trvale smazat vybranou položku z katalogu?
+    <p id="deleteText">
+        Opravdu chceš trvale smazat tuto položku?
         Tuto akci nelze vrátit zpět.
     </p>
 
@@ -114,17 +113,41 @@ body {
 <div id="toast">Položka byla úspěšně smazána</div>
 
 <script>
-function smazat() {
-    const toast = document.getElementById("toast");
-    toast.classList.add("show");
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
 
-    setTimeout(() => {
-        window.location.href = "index.html";
-    }, 2000);
+// Načtení názvu auta
+if (id) {
+    fetch(`/item/${id}`)
+        .then(res => res.json())
+        .then(car => {
+            document.getElementById("deleteText").innerHTML =
+                `Opravdu chceš trvale smazat <strong>${car.nazev}</strong>?<br>
+                 Tuto akci nelze vrátit zpět.`;
+        })
+        .catch(() => {
+            document.getElementById("deleteText").innerText =
+                "Auto nebylo nalezeno.";
+        });
+}
+
+function smazat() {
+    fetch(`/delete/${id}`, {
+        method: "DELETE"
+    })
+    .then(res => res.json())
+    .then(() => {
+        const toast = document.getElementById("toast");
+        toast.classList.add("show");
+
+        setTimeout(() => {
+            window.location.href = "/";
+        }, 1500);
+    });
 }
 
 function zrusit() {
-    window.location.href = "index.html";
+    window.location.href = "/";
 }
 </script>
 
