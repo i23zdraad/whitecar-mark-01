@@ -261,98 +261,7 @@ footer p {
 </header>
 
 
-<main>
-    <div class="car">
-        <img class="auto" id="auto" src="https://www.carscoops.com/wp-content/uploads/2019/04/ea5becbb-koenigsegg-jesko-.jpg">
-        <h2 id="nazev">KOENIGSEGG JESKO</h2>
-        <div class="info">
-            <div><span class="label" id="vyroba">ROK</span>2020</div>
-            <div><span class="label" id="rychlost">TOP SPEED</span>400 km/h</div>
-            <div><span class="label" id="zrychleni">0–100</span>2,7 s</div>
-            <div><img class="flag"   id= "vlajka" src="https://flagcdn.com/w40/se.png"></div>
-        </div>
-         <div class="actions">
-            <button class="btn-edit">UPRAVIT</button>
-            <button class="btn-delete">SMAZAT</button>
-        </div>
-    </div>
-
-    <div class="car">
-        <img class="auto" id="auto" src="https://bugatti.imgix.net/677aa18a531541bbada6c275/chiron-og.jpg">
-        <h2 id="nazev">BUGATTI CHIRON</h2>
-        <div class="info">
-            <div><span class="label" id="vyroba">ROK</span>2019</div>
-            <div><span class="label" id="rychlost">TOP SPEED</span>420 km/h</div>
-            <div><span class="label" id="zrychleni">0–100</span>2,4 s</div>
-            <div><img class="flag"   id= "vlajka" src="https://flagcdn.com/w40/fr.png"></div>
-        </div>
-        <div class="actions">
-            <button class="btn-edit">UPRAVIT</button>
-            <button class="btn-delete">SMAZAT</button>
-        </div>
-
-    </div>
-
-    <div class="car">
-        <img class="auto" id="auto" src="https://1884403144.rsc.cdn77.org/foto/lamborghini-aventador-svj-lamborghini-aventador-svj/MTIwMHg2NzUvZmlsdGVyczpub191cHNjYWxlKDEpL2ltZw/9319828.jpg?v=0&st=_BnrYV_EV4GwFvIbqRlCDZdwb015gwcmaDfuGw8Hkzc&ts=1600812000&e=0">
-        <h2 id="nazev">LAMBORGHINI SVJ</h2>
-        <div class="info">
-            <div><span class="label" id="vyroba">ROK</span>2021</div>
-            <div><span class="label" id="rychlost">TOP SPEED</span>350 km/h</div>
-            <div><span class="label" id="zrychleni">0–100</span>2,8 s</div>
-            <div><img class="flag"   id= "vlajka" src="https://flagcdn.com/w40/it.png"></div>
-        </div>
-         <div class="actions">
-            <button class="btn-edit">UPRAVIT</button>
-            <button class="btn-delete">SMAZAT</button>
-        </div>
-    </div>
-
-    <div class="car">
-        <img class="auto" id="auto" src="https://paultan.org/image/2023/06/Ferrari-SF90-XX-Stradale-and-SF90-XX-Spider-1-1200x628.jpg">
-        <h2 id="nazev">FERRARI SF90</h2>
-        <div class="info">
-            <div><span class="label" id="vyroba">ROK</span>2022</div>
-            <div><span class="label" id="rychlost">TOP SPEED</span>340 km/h</div>
-            <div><span class="label" id="0-100">0–100</span>2,5 s</div>
-            <div><img class="flag"   id= "vlajka" src="https://flagcdn.com/w40/it.png"></div>
-        </div>
-         <div class="actions">
-            <button class="btn-edit">UPRAVIT</button>
-            <button class="btn-delete">SMAZAT</button>
-        </div>
-    </div>
-
-    <div class="car">
-        <img class="auto" id="auto" src="https://d62-a.sdn.cz/d_62/c_img_gV_J/B59T/mclaren-720s-le-mans.jpeg">
-        <h2 id="nazev">McLAREN 720S</h2>
-        <div class="info">
-            <div><span class="label" id="vyroba">ROK</span>2020</div>
-            <div><span class="label" id="rychlost">TOP SPEED</span>341 km/h</div>
-            <div><span class="label" id="0-100">0–100</span>2,9 s</div>
-            <div><img class="flag"   id= "vlajka" src="https://flagcdn.com/w40/gb.png"></div>
-        </div>
-         <div class="actions">
-            <button class="btn-edit">UPRAVIT</button>
-            <button class="btn-delete">SMAZAT</button>
-        </div>
-    </div>
-
-    <div class="car">
-        <img class="auto" id="auto" src="https://s2.dmcdn.net/v/SyYhP1eoWdbS9WgGo/x1080">
-        <h2 id="nazev">PORSCHE 911 TURBO S</h2>
-        <div class="info">
-            <div><span class="label" id="vyroba">ROK</span>2021</div>
-            <div><span class="label" id="rychlost">TOP SPEED</span>330 km/h</div>
-            <div><span class="label" id="0-100">0–100</span>2,7 s</div>
-            <div><img class="flag"   id= "vlajka" src="https://flagcdn.com/w40/de.png"></div>
-        </div>
-         <div class="actions">
-            <button class="btn-edit">UPRAVIT</button>
-            <button class="btn-delete">SMAZAT</button>
-        </div>
-    </div>
-</main>
+<main id="carsContainer"></main>
 
 
 <footer>
@@ -362,10 +271,47 @@ footer p {
 </footer>
 
 <script>
-function toggleMode() {
-    document.body.classList.toggle("dark-mode");
-}
-</script>
+    function toggleMode() {
+        document.body.classList.toggle("dark-mode");
+    }
+    
+    fetch("/items")
+        .then(res => res.json())
+        .then(data => {
+            const container = document.getElementById("carsContainer");
+    
+            data.forEach(car => {
+                const card = document.createElement("div");
+                card.className = "car";
+    
+                card.innerHTML = `
+                    <img class="auto" src="${car.auto}">
+                    <h2>${car.nazev}</h2>
+                    <div class="info">
+                        <div><span class="label">ROK</span>${car.vyroba}</div>
+                        <div><span class="label">TOP SPEED</span>${car.rychlost} km/h</div>
+                        <div><span class="label">0–100</span>${car.zrychleni} s</div>
+                        <div><img class="flag" src="${car.vlajka}"></div>
+                    </div>
+                    <div class="actions">
+                        <button onclick="deleteCar(${car.id})" class="btn-delete">SMAZAT</button>
+                    </div>
+                `;
+    
+                container.appendChild(card);
+            });
+        });
+    
+    function deleteCar(id) {
+        if (!confirm("Opravdu chceš smazat auto?")) return;
+    
+        fetch(`/delete/${id}`, {
+            method: "DELETE"
+        })
+        .then(res => res.json())
+        .then(() => location.reload());
+    }
+    </script>
 
 </body>
 </html>

@@ -1,14 +1,5 @@
 [
   {
-    "id": 1,
-    "nazev": "KOENIGSEGG JESKO",
-    "vyroba": 2020,
-    "rychlost": 400,
-    "zrychleni": 2.7,
-    "auto": "https://www.carscoops.com/wp-content/uploads/2019/04/ea5becbb-koenigsegg-jesko-.jpg",
-    "vlajka": "https://flagcdn.com/w40/se.png"
-  },
-  {
     "id": 2,
     "nazev": "BUGATTI CHIRON",
     "vyroba": 2019,

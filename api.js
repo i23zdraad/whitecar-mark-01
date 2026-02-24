@@ -49,7 +49,7 @@ const server = http.createServer((req, res) => {
     }
 
     // POST /items → přidání auta
-    if (req.method === "POST" && req.url === "/items") {
+    if (req.method === "POST" && req.url === "/pridat-auto") {
         let body = "";
         req.on("data", chunk => body += chunk);
         req.on("end", () => {
@@ -69,6 +69,8 @@ const server = http.createServer((req, res) => {
             return sendJSON(res, 201, car);
         });
     }
+
+
 
     // DELETE /delete/:id → smazání auta
     if (req.method === "DELETE" && req.url.startsWith("/delete/")) {
