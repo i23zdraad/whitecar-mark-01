@@ -124,6 +124,29 @@ button {
 button:hover {
     background: #e0b85c;
 }
+
+footer {
+    background: linear-gradient(90deg, #0d0f13, #1a1c22, #0d0f13);
+    color: #c9a24d;
+    padding: 60px 20px 40px;
+    text-align: center;
+    border-top: 2px solid #c9a24d;
+}
+
+footer img {
+    height: 45px;
+    margin-bottom: 20px;
+}
+
+footer h3 {
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+footer p {
+    color: #9a9a9a;
+    font-size: 14px;
+}
 </style>
 </head>
 
@@ -132,14 +155,14 @@ button:hover {
 <header>
     <div class="logo"><img src="logo.png" alt="logo"></div>
     <nav>
-        <a href="/">ÚVOD</a>
+        <a href="/index.html">ÚVOD</a>
         <a href="/pridat.html">PŘIDAT</a>
         <button class="toggle" onclick="toggleMode()">☀ / ☾</button>
     </nav>
 </header>
 
 <main>
-<form id="addForm">
+<form id="addForm" method="POST" action="/pridat-auto">
     <h2>Přidat nové auto</h2>
 
     <div class="form-group">
@@ -177,6 +200,11 @@ button:hover {
     <button type="submit">Přidat auto</button>
 </form>
 </main>
+<footer>
+    <img src="logo.png" alt=" logo">
+    <h3>Katalog sportovních aut</h3>
+    <p>Adam Zdráhal</p>
+</footer>
 
 <script>
 function toggleMode() {
